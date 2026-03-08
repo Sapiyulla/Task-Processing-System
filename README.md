@@ -27,7 +27,7 @@ The system consists of:
 - Message broker
 - Worker service (node)
 
-![](/source/architecture.png)
+![](/.source/architecture.png)
 
 ## Tech Stack
 
