@@ -1,4 +1,4 @@
-# distributed Tasks Processing Service
+# distributed Tasks Processing System
 
 A service for handling various tasks. The peculiarity lies in the distributed nature of the system. 
 
