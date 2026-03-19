@@ -36,20 +36,6 @@ The system consists of:
 - Kafka
 - Docker
 
-## Project Structure
-
-```
-cmd/
-api/
-worker/
-internal/
-domain/
-service/
-repository/
-pkg/
-configs/
-scripts/
-```
 ## Потоки данных
 1. `User -> API`
 2. `API -> DB (task + outbox)`
@@ -73,3 +59,10 @@ cd dTPS
 docker compose up
 ```
 
+## 7. Дополнительно
+
+> Я решил реализовать проект через `Domain Driven Design` подход. Это значит, что должно быть приложение-документация к каждой доменной модели. 
+
+Вся документация по моделям (_[в папке](/docs/domain/)_):
+ - [Task](/docs/domain/task.md)
+ - [Execution](/docs/domain/execution.md)
