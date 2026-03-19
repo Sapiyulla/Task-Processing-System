@@ -22,10 +22,10 @@ This project demonstrates:
 
 The system consists of:
 
-- API service
-- Outbox relay
+- [API service](/services/api-service/)
+- [Outbox relay](/services/relay-outbox/)
 - Message broker
-- Worker service (node)
+- [Worker](/services/worker/)
 
 ![](/source/architecture.png)
 
