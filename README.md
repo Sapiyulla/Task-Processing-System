@@ -27,7 +27,7 @@ The system consists of:
 - Message broker
 - Worker service (node)
 
-![](/.source/architecture.png)
+![](/source/architecture.png)
 
 ## Tech Stack
 
@@ -50,6 +50,12 @@ pkg/
 configs/
 scripts/
 ```
+## Потоки данных
+1. `User -> API`
+2. `API -> DB (task + outbox)`
+3. `Relay -> Kafka`
+4. `Worker -> Execution`
+
 
 ## 6. Getting Started
 
@@ -62,20 +68,8 @@ scripts/
 ### Run
 
 ```sh
-git clone https://github.com/Sapiyulla/dJPS.git
-cd dJPS
+git clone https://github.com/Sapiyulla/Task-Processing-System.git
+cd dTPS
 docker compose up
 ```
 
-## Configuration
-
-| Variable | Description |
-|---------|-------------|
-| DB_URL | PostgreSQL connection |
-
-## Roadmap
-
-- User API
-- Task API
-- Outbox + Relay
-- Worker 
