@@ -27,7 +27,7 @@ The system consists of:
 - Message broker
 - [Worker](/services/worker/)
 
-![](/source/architecture.png)
+![architecture](/source/architecture.png)
 
 ## Tech Stack
 
@@ -61,9 +61,9 @@ docker compose up
 
 ## Configuration
 
-| Variable | Description |
-|---------|-------------|
-| DB_URL | PostgreSQL connection |
+| Variable |      Description      |
+|----------|-----------------------|
+|  DB_URL  | PostgreSQL connection |
 
 ## Roadmap
 
