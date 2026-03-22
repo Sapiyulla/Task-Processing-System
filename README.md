@@ -1,6 +1,6 @@
 # distributed Tasks Processing System
 
-A service for handling various tasks. The peculiarity lies in the distributed nature of the system. 
+A service for handling various tasks. The peculiarity lies in the distributed nature of the system.
 
 > **THE PROJECT IS EDUCATIONAL**
 
@@ -22,12 +22,12 @@ This project demonstrates:
 
 The system consists of:
 
-- API service
-- Outbox relay
+- [API service](/services/api-service/)
+- [Outbox relay](/services/relay-outbox/)
 - Message broker
-- Worker service (node)
+- [Worker](/services/worker/)
 
-![](/.source/architecture.png)
+![](/source/architecture.png)
 
 ## Tech Stack
 
@@ -36,20 +36,12 @@ The system consists of:
 - Kafka
 - Docker
 
-## Project Structure
+## Потоки данных
 
-```
-cmd/
-api/
-worker/
-internal/
-domain/
-service/
-repository/
-pkg/
-configs/
-scripts/
-```
+1. `User -> API`
+2. `API -> DB (task + outbox)`
+3. `Relay -> Kafka`
+4. `Worker -> Execution`
 
 ## 6. Getting Started
 
@@ -62,8 +54,8 @@ scripts/
 ### Run
 
 ```sh
-git clone https://github.com/Sapiyulla/dJPS.git
-cd dJPS
+git clone https://github.com/Sapiyulla/Task-Processing-System.git
+cd dTPS
 docker compose up
 ```
 
@@ -78,4 +70,4 @@ docker compose up
 - User API
 - Task API
 - Outbox + Relay
-- Worker 
+- Worker
