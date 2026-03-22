@@ -1,7 +1,7 @@
 # Task
 
 ## Описание
-Задача - это `entity`, который является центральной сущностью.
+Задача - это `aggregate root`, который является центральной сущностью.
 
 ## Атрибуты:
  - `id` - уникальный идентификатор
@@ -24,20 +24,32 @@ status | description
 `CREATED` | Задача создана
 `WAIT` | Задача ожидает выполнения
 `QUEUED` | Задача в очереди на выполнение
-`IN PROGRESS`| Задача выполняется
+`IN_PROGRESS`| Задача выполняется
 `COMPLETED` | Задача завершена
-
-## Инварианты
-
-### При создании
- - Не более 20 задач в разделе "черновых" на 1 пользователя
- - Не более 30 задач в разделе "завершенных" на 1 пользователя
+`FAILED` | Задача завершена с ошибкой
 
 ## Команды
 
 command | description
 -|-
-`CreateTask` | Создание задачи
+`QueueTask` | Отправка в очередь
 `MarkTaskReadyForDelivery` | Обозначить задачу как готовую к исполнению
 `MarkTaskCompleted` | Обозначить задачу как выполненную
 `MarkTaskFailed` | Обозначить задачу как проваленную
+
+## State Machine
+
+FROM    |    → COMMAND         |            → TO  
+-|-|-
+ \- | → CreateTask | → CREATED
+CREATED |    → MarkTaskReadyForDelivery   | → WAIT  
+WAIT     |   → QueueTask            |       → QUEUED  
+QUEUED   |   → StartExecution       |       → IN_PROGRESS  
+IN_PROGRESS | → CompleteTask            |    → COMPLETED
+
+## Инварианты
+
+- Нельзя завершить задачу не из `IN_PROGRESS`
+- Нельзя перевести `COMPLETED` в любое другое состояние
+- Нельзя ретраить `FAILED` (если NotRetryableError)
+- Нельзя утанавливать `payload` более чем **10МБ**
